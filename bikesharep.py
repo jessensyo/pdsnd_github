@@ -5,8 +5,9 @@ import numpy as np
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
               'washington': 'washington.csv' }
+months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun']
+days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
-    
 def data_filter():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -33,23 +34,23 @@ def data_filter():
             
     if data_filter == 'month':
         month = input("Which month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
-        while month not in ['jan', 'feb', 'mar', 'apr', 'may', 'jun']:
+        while month not in months:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             month = input("Which month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
         day_of_week = 'all'
     elif data_filter == 'day':
         day_of_week = input("Which day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
-        while day_of_week not in ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']:
+        while day_of_week not in days:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             day_of_week = input("Which day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
         month = 'all'
     elif data_filter == 'both':
         month = input("\nWhich month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
-        while month not in ['jan', 'feb', 'mar', 'apr', 'may', 'jun']:
+        while month not in months:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             month = input("Which month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
         day_of_week = input("\nWhich day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
-        while day_of_week not in ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']:
+        while day_of_week not in days:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             day_of_week = input("Which day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
     else:
@@ -99,16 +100,16 @@ def time_stats(df):
 
     #To display the most common month
     popular_month = df['month'].mode()[0] 
-    print('Most Popular Month:', popular_month)
+    print('The Most Popular Month is {}.'.format(popular_month))
 
     #To display the most common day of week
     popular_day = df['day_of_week'].mode()[0] 
-    print('Most Popular Day:', popular_day)
+    print('The Most Popular Day is {}.'.format(popular_day))
 
     #To display the most common start hour
     df['hour'] = df['Start Time'].dt.hour 
     popular_hour = df['hour'].mode()[0] 
-    print('Most Common Start Hour:', popular_hour)
+    print('The Most Common Start Hour {}.'.format(popular_hour))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)

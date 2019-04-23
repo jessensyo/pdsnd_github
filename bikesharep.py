@@ -5,8 +5,9 @@ import numpy as np
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
               'washington': 'washington.csv' }
+months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun']
+days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
 
-    
 def data_filter():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -33,23 +34,23 @@ def data_filter():
             
     if data_filter == 'month':
         month = input("Which month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
-        while month not in ['jan', 'feb', 'mar', 'apr', 'may', 'jun']:
+        while month not in months:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             month = input("Which month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
         day_of_week = 'all'
     elif data_filter == 'day':
         day_of_week = input("Which day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
-        while day_of_week not in ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']:
+        while day_of_week not in days:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             day_of_week = input("Which day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
         month = 'all'
     elif data_filter == 'both':
         month = input("\nWhich month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
-        while month not in ['jan', 'feb', 'mar', 'apr', 'may', 'jun']:
+        while month not in months:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             month = input("Which month would you like to filter by? Jan, Feb, Mar, Apr, May, Jun\n").lower()
         day_of_week = input("\nWhich day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
-        while day_of_week not in ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']:
+        while day_of_week not in days:
             print("Sorry I don't understand your input, please only key in the choices provided.\n")
             day_of_week = input("Which day would you like to filter by? Mon, Tue, Wed, Thu, Fri, Sat, Sun?\n").lower()
     else:
